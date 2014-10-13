@@ -1,0 +1,40 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".FileDrop" android:id="@+id/jump_page"
+    >
+
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" >
+        <LinearLayout android:id="@+id/renamehint" android:paddingTop="15dp"
+            android:orientation="horizontal" android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="@string/change"  android:textSize="16sp"/>
+        <EditText android:id="@+id/renametext" android:selectAllOnFocus="true"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:singleLine="true" android:hint="@string/rename" />
+        </LinearLayout>
+        <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
+            android:id="@+id/renmtext" android:layout_below="@+id/renamehint"
+            android:paddingTop="10dp" android:text="@string/rename"
+            android:textSize="18sp"/>
+        <LinearLayout android:id="@+id/yesornobutton" android:paddingTop="15dp"
+            android:layout_below="@+id/renmtext" android:layout_centerHorizontal="true"
+            android:orientation="horizontal" android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <Button android:text="@string/change" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/change"
+                style="?android:attr/buttonBarButtonStyle"
+                android:textSize="12sp"/>
+            <Button android:text="@string/cancel" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/cancel"
+                style="?android:attr/buttonBarButtonStyle" 
+                android:textSize="12sp"/>
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>

@@ -1,0 +1,27 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:orientation="vertical" xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FileDrop" android:id="@+id/inputstring_page"
+>
+
+<EditText
+    android:id="@+id/searchC"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" android:maxHeight="300dp"
+    android:gravity="left" android:inputType="textMultiLine"/>
+
+<LinearLayout android:paddingTop="15dp" android:layout_below="@+id/searchC"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal" android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <Button android:text="@string/confirm" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/change"
+                style="?android:attr/buttonBarButtonStyle"
+                android:textSize="12sp"/>
+            <Button android:text="@string/cancel" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/cancel"
+                style="?android:attr/buttonBarButtonStyle" 
+                android:textSize="12sp"/>
+        </LinearLayout>
+</RelativeLayout>
