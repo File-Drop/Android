@@ -849,12 +849,8 @@ public class FileDrop extends Activity {
 		invalidateOptionsMenu();
 		islistening=true;
 		setContentView(R.layout.listen_page);
-		String string="ÇëÔÚPC¡¢Mac»òÕßÆäËûIOS/AndroidÉè±¸ÉÏ´ò¿ªFile DropÒÔÏò´ËÉè±¸·¢ËÍÎÄ¼ş";
 		((TextView)findViewById(R.id.textView1)).setText(R.string.details30);
-		string="ÈôÆäËûÉè±¸Óë´ËÉè±¸²»ÔÚÍ¬Ò»ÎŞÏß¾ÖÓòÍø»·¾³ÏÂ£¬ÇëÔÚÆäËûÉè±¸ÉÏÑ¡Ôñ\"Ìí¼Ó\"°´Å¥²¢";
-		string+="ÊäÈëÒÔÏÂµØÖ·£º";
 		((TextView)findViewById(R.id.textView2)).setText(R.string.details31);
-		string="";
 		Pattern pattern=Pattern.compile("^\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}$");
 		Enumeration<NetworkInterface> netInterfaces = null;
 		try {
@@ -904,8 +900,8 @@ public class FileDrop extends Activity {
 		
 		protected void onProgressUpdate(Object... values) {
 			long hr=(Long)values[0],tr=(Long)values[1];
-			String msg="ÕıÔÚ½ÓÊÕµÚ"+values[2]+"¸öÎÄ¼ş\n\nµ±Ç°ÎÄ¼ş:\n"+((File)values[3]).getName()
-					+" ("+FormetFileSize((Long)values[4])+")\n\nÒÑ¾­½ÓÊÕ ";
+			String msg="æ­£åœ¨æ¥æ”¶ç¬¬"+values[2]+"ä¸ªæ–‡ä»¶\n\nå½“å‰æ–‡ä»¶:\n"+((File)values[3]).getName()
+					+" ("+FormetFileSize((Long)values[4])+")\n\nå·²ç»æ¥æ”¶ ";
 			if (!isCn) {
 				int x=(Integer)values[2];
 				String sf="th";
@@ -979,7 +975,7 @@ public class FileDrop extends Activity {
 					
 					if (isCancelled()) {
 						socket.close();
-						String mm="½ÓÊÕÒÑÈ¡Ïû£¬ÒÑ¾­½ÓÊÕ"+FormetFileSize(hasRecieved);
+						String mm="æ¥æ”¶å·²å–æ¶ˆï¼Œå·²ç»æ¥æ”¶"+FormetFileSize(hasRecieved);
 						if (!isCn) mm="Process canceled, "+FormetFileSize(hasRecieved)+" received";
 						eventHandler.sendMessage(eventHandler.obtainMessage(0, mm));
 						return true;
@@ -1016,7 +1012,7 @@ public class FileDrop extends Activity {
 						if (isCancelled()) {
 							fileOutputStream.close();
 							socket.close();
-							String mm="½ÓÊÕÒÑÈ¡Ïû£¬ÒÑ¾­½ÓÊÕ"+FormetFileSize(hasRecieved);
+							String mm="æ¥æ”¶å·²å–æ¶ˆï¼Œå·²ç»æ¥æ”¶"+FormetFileSize(hasRecieved);
 							if (!isCn) mm="Process canceled, "+FormetFileSize(hasRecieved)+" received";
 							eventHandler.sendMessage(eventHandler.obtainMessage(0, mm));
 							return true;
@@ -1111,12 +1107,12 @@ public class FileDrop extends Activity {
 				int index=receive.indexOf("\n");
 				final String device=new String(receive.substring(0,index));
 				final String text=new String(receive.substring(index+1, receive.length()));
-				String xString="ÄúÒÑ¾­ÊÕµ½"+device+"·¢À´µÄÎÄ±¾£º\n\n"+text+"\n\nÊÇ·ñ¸´ÖÆµ½¼ôÇĞ°å£¿";
+				String xString="æ‚¨å·²ç»æ”¶åˆ°"+device+"å‘æ¥çš„æ–‡æœ¬ï¼š\n\n"+text+"\n\næ˜¯å¦å¤åˆ¶åˆ°å‰ªåˆ‡æ¿ï¼Ÿ";
 				if (!isCn)
 					xString="Received text from "+device+"\n\n"+text+"\n\nCopy to the clipboard?";
 				final String tString=new String(xString);
 				Toast.makeText(FileDrop.this, "FileDrop: "+resources.getString(R.string.details35), Toast.LENGTH_SHORT).show();
-				new AlertDialog.Builder(FileDrop.this).setTitle("ÄúÒÑÊÕµ½ÎÄ±¾£¡")
+				new AlertDialog.Builder(FileDrop.this).setTitle("æ‚¨å·²æ”¶åˆ°æ–‡æœ¬ï¼")
 				.setMessage(tString)
 				.setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
 				
@@ -1187,7 +1183,7 @@ public class FileDrop extends Activity {
 				Log.w("name", devicename);
 				final int l=data.length-1;
 				Toast.makeText(FileDrop.this, "FileDrop: "+resources.getString(R.string.details41), Toast.LENGTH_SHORT).show();
-				String files=devicename+" ÏòÄú·¢ËÍÎÄ¼ş\n£¨¹²¼Æ "+l+" ¸öÎÄ¼ş»òÎÄ¼ş¼Ğ£©\n\n";
+				String files=devicename+" å‘æ‚¨å‘é€æ–‡ä»¶\nï¼ˆå…±è®¡ "+l+" ä¸ªæ–‡ä»¶æˆ–æ–‡ä»¶å¤¹ï¼‰\n\n";
 				if (!isCn)
 					files=devicename+" is sending files to you\n("+l+" files or folders in total)\n\n";
 				for (int j=1;j<=l;j++) {
@@ -1207,14 +1203,14 @@ public class FileDrop extends Activity {
 					if ((Boolean)mp.get("isD"))
 					{
 						if (isCn)
-							files+="(ÎÄ¼ş¼Ğ)";
+							files+="(æ–‡ä»¶å¤¹)";
 						else files+="(Folder)";
 					}
 					else files+="("+FormetFileSize(Long.parseLong((String)mp.get("size")))+")";
 					files+="\n";
 				}
 				if (isCn)
-					files+="\nµ±Ç°Ä¿Â¼£º"+nowDirectory+"\nÊÇ·ñÈ·ÈÏ½ÓÊÕµ½¸ÃÄ¿Â¼ÏÂ£¿";
+					files+="\nå½“å‰ç›®å½•ï¼š"+nowDirectory+"\næ˜¯å¦ç¡®è®¤æ¥æ”¶åˆ°è¯¥ç›®å½•ä¸‹ï¼Ÿ";
 				else 
 					files+="\nCurrent directory: "+nowDirectory+"\nConfirm to accept files to this folder?";
 				final String msg=new String(files);
@@ -1370,7 +1366,7 @@ public class FileDrop extends Activity {
 						if (isCancelled()) {
 							printStream.close();
 							socket.close();
-							String mm="ÎÄ¼ş·¢ËÍÈ¡Ïû£¬ÒÑ·¢ËÍ"+FormetFileSize(hasSent);
+							String mm="æ–‡ä»¶å‘é€å–æ¶ˆï¼Œå·²å‘é€"+FormetFileSize(hasSent);
 							if (!isCn) mm="File transport canceled, "+FormetFileSize(hasSent)+" bytes sent";
 							eventHandler.sendMessage(eventHandler.obtainMessage(0, 
 									mm));
@@ -1418,7 +1414,7 @@ public class FileDrop extends Activity {
 						if (isCancelled()) {
 							printStream.close();
 							socket.close();
-							String mm="ÎÄ¼ş·¢ËÍÈ¡Ïû£¬ÒÑ·¢ËÍ"+FormetFileSize(hasSent);
+							String mm="æ–‡ä»¶å‘é€å–æ¶ˆï¼Œå·²å‘é€"+FormetFileSize(hasSent);
 							if (!isCn) mm="File transport canceled, "+FormetFileSize(hasSent)+" bytes sent";
 							eventHandler.sendMessage(eventHandler.obtainMessage(0, 
 									mm));
@@ -1470,12 +1466,12 @@ public class FileDrop extends Activity {
 								publishProgress(0,i+1,tmpFile);
 								updatetime=System.currentTimeMillis();
 							}
-							Log.w("·¢ËÍÊı¾İ°ü", j+"");
+							Log.w("å‘é€æ•°æ®åŒ…", j+"");
 							if (isCancelled()) {
 								fileInputStream.close();
 								printStream.close();
 								socket.close();
-								String mm="ÎÄ¼ş·¢ËÍÈ¡Ïû£¬ÒÑ·¢ËÍ"+FormetFileSize(hasSent);
+								String mm="æ–‡ä»¶å‘é€å–æ¶ˆï¼Œå·²å‘é€"+FormetFileSize(hasSent);
 								if (!isCn) mm="File transport canceled, "+FormetFileSize(hasSent)+" bytes sent";
 								eventHandler.sendMessage(eventHandler.obtainMessage(0, 
 										mm));
@@ -1491,7 +1487,7 @@ public class FileDrop extends Activity {
 							fileInputStream.close();
 							printStream.close();
 							socket.close();
-							String mm="ÎÄ¼ş·¢ËÍÈ¡Ïû£¬ÒÑ·¢ËÍ"+FormetFileSize(hasSent);
+							String mm="æ–‡ä»¶å‘é€å–æ¶ˆï¼Œå·²å‘é€"+FormetFileSize(hasSent);
 							if (!isCn) mm="File transport canceled, "+FormetFileSize(hasSent)+" bytes sent";
 							eventHandler.sendMessage(eventHandler.obtainMessage(0, 
 									mm));
@@ -1525,9 +1521,9 @@ public class FileDrop extends Activity {
 			int j=(Integer)values[1];
 			String name=((File)values[2]).getName();
 			String string;
-			string="·¢ËÍ¸ùÄ¿Â¼£º"+tmpFile.getPath()+"\n\nÕıÔÚ·¢ËÍµÚ"+j+"¸öÎÄ¼ş£¬¹²¼Æ"+fileNum+"¸öÎÄ¼ş\n\n";
-			string+="µ±Ç°ÈÎÎñ£º\n"+name+" ("+FormetFileSize(((File)values[2]).length())+")\n\n";
-			string+="ÒÑ·¢ËÍ "+i+"B/"+length+"B\n";
+			string="å‘é€æ ¹ç›®å½•ï¼š"+tmpFile.getPath()+"\n\næ­£åœ¨å‘é€ç¬¬"+j+"ä¸ªæ–‡ä»¶ï¼Œå…±è®¡"+fileNum+"ä¸ªæ–‡ä»¶\n\n";
+			string+="å½“å‰ä»»åŠ¡ï¼š\n"+name+" ("+FormetFileSize(((File)values[2]).length())+")\n\n";
+			string+="å·²å‘é€ "+i+"B/"+length+"B\n";
 			string+="("+FormetFileSize(i)+"/"+FormetFileSize(length)+")";
 			if (!isCn) {
 				string="Root directory: "+tmpFile.getPath()+"\n\nSending files: "+j+"/"+fileNum;
